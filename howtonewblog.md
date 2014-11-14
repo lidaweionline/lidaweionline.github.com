@@ -1,13 +1,11 @@
 ---
 layout: default
-title: How to new Blog();
-description: Thanks for comming and Please star and fork in Github if u like my blog.
-keywords: 有田十三,javascript,web,github,blog
+title: 使用jekyll和github搭建静态博客 
+keywords: github blog 
 ---
 
 {{page.title}}
 ========================
-<p class="meta">23 Jan 2014 - Sysu, Guangzhou</p>
       
 Which help me to build my blog.　[[Open]](http://www.ruanyifeng.com/blog/2012/08/blogging_with_jekyll.html)
 
@@ -46,12 +44,12 @@ Recommend <strong>[Monokai.css](https://github.com/richleland/pygments-css/blob/
 <strong style="color:#a6e22e;">Create Repo</strong> and <strong style="color:#a6e22e;">Upload to Github</strong>
     
 {% highlight python %}
-$ makdir ~/hello-world    
-$ cd ~/hello-world        
+$ mkdir ~/newrepo    
+$ cd ~/newrepo        
 $ git init              
 $ touch README
 $ git add README                    
 $ git commit -m "first commit"    
-$ git remote add origin https://github.com/yooungt13/hello-world.git     
+$ git remote add origin https://github.com/newrepo.git     
 $ git push -u origin master     
 {% endhighlight %}
