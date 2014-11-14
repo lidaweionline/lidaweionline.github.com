@@ -1,0 +1,16 @@
+baseurl:     /
+url:         http://localhost:4000
+source:      .
+destination: ./_site
+encoding:    utf-8
+permalink:   /:title
+highlighter: pygments
+markdown:    rdiscount
+
+#Basic Configuration
+title:       Hello13 | Words may be false
+subTitle:    While we could survive and hope will grow up.
+description: Thanks for comming and Please star and fork in Github if u like my blog.
+
+author:      
+  name: 有田十三
