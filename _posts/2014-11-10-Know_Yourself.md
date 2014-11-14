@@ -1,10 +1,9 @@
 ---
 layout: post
 title: Know Yourself
-categories:
-- 认识
-tags:
-- 认识你自己
+categories: diary
+tags: diary
+---
 --------------------
 ![](/media/pic_sale/1111-0.jpg)
 
