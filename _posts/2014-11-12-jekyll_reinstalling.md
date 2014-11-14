@@ -1,11 +1,7 @@
 ---
 layout: post
 title: jekyll重新安装
-categories:
-- ubuntu 
-tags:
-- jekyll rvm ruby
------------------------
+---
 ---------------------
 
 jekyll安装时报错failed to build a native extension.
