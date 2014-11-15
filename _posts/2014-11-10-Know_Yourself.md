@@ -5,11 +5,9 @@ categories: diary
 tags: diary
 ---
 --------------------
-![](/media/pic_sale/1111-0.jpg)
-
-Knowing yourself is the beginning of all wisdom.
-
-----Aristotle
+<img src="/media/pic_sale/1111-0.jpg" alt="know yourself" width="600">
+</br>
+Knowing yourself is the beginning of all wisdom.--Aristotle
 ---------------------
 明天晚上电力系统规划考试。虽然不知道是开卷还是闭卷，作为一位大四老油条，我先开为敬。
 很幸运的通过伊顿实习的面试，今天上午收到何导的通知。当时报这个有点冲动，随之而来也有很多问题。不过现在上了贼船还是想想how to keep calm and how to get to know yourself吧。因为。。最近看卢梭《论人类不平等的起源和基础》，其中引用了德尔斐神庙上的三句箴言之一，know yourself。虽然好难懂，不过还是接着翻翻吧。。
