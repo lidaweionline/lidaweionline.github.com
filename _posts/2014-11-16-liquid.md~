@@ -1,0 +1,22 @@
+---
+layout: post
+title: liquid语法
+categories: web
+tags: liquid
+---
+
+#liquid简介
+Liquid是一模板引擎语言，从电子商务系统Shopify提取而来。Ruby库渲染的安全模板，不影响服务器上的安全性。
+#参考文章
+[liquid速成](http://github.com/Shopify/liquid/wiki/Liquid-for-Designers)
+
+liquid语法介绍
+
+[jekyll自己的扩展](http://github.com/mojombo/jekyll/wiki/Liquid-Extensions)
+
+[liquid Documentation](http://docs.shopify.com/themes/liquid-documentation/basics)
+
+#Liquid for Designers
+##Output
+
+##Tag
