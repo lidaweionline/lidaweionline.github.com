@@ -1,0 +1,147 @@
+<strong>html简介</strong>
+<strong>html参考文章</strong>
+<a href="http://www.w3school.com.cn/tags/index.asp">html标签参考手册</a>
+<a href="http://www.w3school.com.cn/tags/html_ref_standardattributes.asp">html全局属性</a>
+<a href="http://www.w3school.com.cn/css/index.asp">CSS教程</a>
+<a href="http://www.w3school.com.cn/html/html_quick.asp">html快速参考</a>
+
+<strong>具体操作</strong>
+<a href="http://www.w3school.com.cn/html/html_tables.asp"><strong>Html表格操作</strong></a>
+<strong>html头部元素</strong>
+<p>
+head元素中有如下内容：
+<table border="1">
+<caption>head元素中内容</caption>
+<tr>
+<th>标签</th>
+<th>描述</th>
+</tr>
+<tr>
+<td>title</td>
+<td>定义文档标题</td>
+</tr>
+<tr>
+<td>base</td>
+<td>定义链接默认地址</td>
+</tr>
+<tr>
+<td>link</td>
+<td>定义文档与外部资源联系</td>
+</tr>
+<tr>
+<td>style</td>
+<td>定义文档样式</td>
+</tr>
+<tr>
+<td>meta</td>
+<td>定义html文档元数据</td>
+</tr>
+<tr>
+<td>script</td>
+<td>定义客户端脚本</td>
+</tr>
+<p>
+之前在玉伯的Github Issues里看到了使用JS检测CPU使用率的方法，觉得很赞。<br>
+特别自己实现了一下，另外加了一个绘制直方图的功能可以直观看到CPU使用率的情况。<br>
+</p>
+<br> 
+<div>
+	<button id='btn' style="display:block;">Start</button>
+	<canvas id='canvas' width='300' height='200' style="background:#000;border:1px solid #fff;"></canvas>
+</div>
+<br><br>
+<strong>实现思想</strong> <br>   
+<br>  
+其实就是setInterval，利用当前时间减去上一次执行timer记录的时间，得到时间差来反映CPU的延迟，侧面反映了CPU的使用率。
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">[],</span><span class="nx">t</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">cpuTimer</span> <span class="o">=</span> <span class="nx">setInterval</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">t</span> <span class="o">&amp;&amp;</span> <span class="nx">data</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">Data</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span><span class="o">-</span><span class="nx">t</span><span class="p">);</span>
+    <span class="nx">t</span> <span class="o">=</span> <span class="nx">Data</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
+<span class="p">},</span><span class="mi">500</span><span class="p">);</span></code></pre></div>
+理论上得到data应为[500,500,500,500,500...],但实际上CPU肯定会略微延迟,data可能为[501,502,502,501,503...]。如果CPU使用率很高的话,延迟会很大,data就会变为[550,551,552,552,551...]。通过判断data的变化可以初步推断CPU的使用率。    
+<br> 
+<br> 
+<strong>使用直方图直观表示CPU使用率</strong><br> 
+<br> 
+我们通过绘制data的直方图，可以看到数据的波动情况。当直方图中某一时段数值陡升，证明那一时刻CPU使用率较高。
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">drawHisto</span><span class="p">(</span><span class="nx">data</span><span class="p">){</span>
+    <span class="kd">var</span> <span class="nx">cvs</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;canvas&#39;</span><span class="p">);</span>
+        <span class="nx">ctx</span> <span class="o">=</span> <span class="nx">cvs</span><span class="p">.</span><span class="nx">getContext</span><span class="p">(</span><span class="s1">&#39;2d&#39;</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">width</span> <span class="o">=</span> <span class="nx">cvs</span><span class="p">.</span><span class="nx">width</span><span class="p">,</span>
+        <span class="nx">height</span> <span class="o">=</span> <span class="nx">cvs</span><span class="p">.</span><span class="nx">height</span><span class="p">,</span>
+        <span class="nx">histoWidth</span> <span class="o">=</span> <span class="nx">width</span> <span class="o">/</span> <span class="nx">size</span><span class="p">;</span>
+    
+    <span class="c1">// 重绘直方图</span>
+    <span class="nx">ctx</span><span class="p">.</span><span class="nx">fillStyle</span> <span class="o">=</span> <span class="s2">&quot;#fff&quot;</span><span class="p">;</span>
+    <span class="nx">ctx</span><span class="p">.</span><span class="nx">fillRect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="nx">width</span><span class="p">,</span><span class="nx">height</span><span class="p">);</span>    
+    <span class="nx">ctx</span><span class="p">.</span><span class="nx">beginPath</span><span class="p">();</span>
+    <span class="nx">ctx</span><span class="p">.</span><span class="nx">lineWidth</span> <span class="o">=</span> <span class="nx">histoWidth</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
+    <span class="nx">ctx</span><span class="p">.</span><span class="nx">strokeStyle</span> <span class="o">=</span> <span class="s1">&#39;#000&#39;</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span> <span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">len</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">len</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="nx">i</span> <span class="o">*</span> <span class="nx">histoWidth</span><span class="p">,</span>
+            <span class="c1">// +5、/20、-10只是为了显示效果,</span>
+            <span class="c1">// ~~为数值取整相当于Math.floor()</span>
+            <span class="nx">y</span> <span class="o">=</span> <span class="o">~~</span><span class="p">(</span> <span class="p">(</span><span class="nx">data</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">-</span> <span class="nx">speed</span> <span class="o">+</span> <span class="mi">5</span><span class="p">)</span> <span class="o">/</span> <span class="mi">20</span> <span class="o">*</span> <span class="p">(</span><span class="nx">height</span><span class="o">-</span><span class="mi">10</span><span class="p">)</span> <span class="p">);</span>
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">moveTo</span><span class="p">(</span> <span class="nx">x</span><span class="o">+</span><span class="nx">histoWidth</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="nx">height</span> <span class="p">);</span>
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">lineTo</span><span class="p">(</span> <span class="nx">x</span><span class="o">+</span><span class="nx">histoWidth</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="nx">height</span><span class="o">-</span><span class="nx">y</span> <span class="p">);</span>
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">stroke</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+<br>
+
+<script>
+(function () {
+	var data = [0,0,0,0,0,0,0,0,0,0],
+		t,size = 10.
+		speed = 500;
+	function runnable(){	
+		if( t ){
+			data.shift();
+			data.push(Date.now()-t);
+			drawHisto(data);
+		}
+		t = Date.now();
+		//setTimeout(arguments.callee,speed)
+	};
+	function drawHisto(data){
+		//console.log(data);
+		var cvs = document.getElementById('canvas');
+			ctx = cvs.getContext('2d');
+		var width = cvs.width,
+			height = cvs.height,
+			histoWidth = width / size;
+		
+		// 重绘直方图
+		ctx.fillStyle = "#000";
+		ctx.fillRect(0,0,width,height);
+
+		ctx.beginPath();
+		ctx.lineWidth = histoWidth/2;
+		ctx.strokeStyle = '#fff';
+		for( var i = 0, len = data.length; i < len; i++){
+			var x = i*histoWidth,
+				// +5、/20、-10只是为了显示效果
+				y = ~~((data[i] - speed + 5)/20* (height-10));
+			ctx.moveTo(x+histoWidth/2,height);
+			ctx.lineTo(x+histoWidth/2,height-y);
+			ctx.stroke();
+		}
+	}
+
+	var btn = document.getElementById('btn'),
+		cpuTimer = null,
+		isStart = false;
+
+	btn.onclick = function(){
+		if( !isStart ){
+			cpuTimer = setInterval(runnable,speed);
+			this.innerHTML = 'Stop';
+			isStart = true;
+		}else{
+			window.clearInterval(cpuTimer);
+			this.innerHTML = 'Start';
+			isStart = false;
+		}
+	}
+})();
+</script>

@@ -1,0 +1,117 @@
+<h1 id="markdown">markdown简介</h1>
+<p>markdown是轻量级的标记语言。部分不完善的图片或者文本可以采用插入html标记解决。
+#参考文章
+<a href="www.ituring.com.cn/article/23">图灵社区markdown语法简介</a>
+<a href="www.ituring.com.cn/article/tagged/214">图灵社区markdown其他文章</a>
+#基本markdown语法
+##文字格式
+单个回车
+视作空格</p>
+
+<p>连续回车</p>
+
+<p>视作分段</p>
+
+<p>行尾连续两个空格,视作段内换行<br />
+斜体：*文字*  </p>
+
+<p>加粗：**文字**</p>
+
+<h2 id="section">段落格式</h2>
+<p>引用：&gt;文字
+示例：<br />
+&gt; 引用文字</p>
+
+<p>标题：
+一级标题：#一级标题<br />
+示例：
+#一级标题</p>
+
+<p>二级标题：##二级标题 
+ 示例：
+##二级标题</p>
+
+<p>三级标题：###三级标题 
+示例：
+###三级标题</p>
+
+<p>或者使用=和-来标注</p>
+
+<h1 id="section-1">大标题</h1>
+
+<p>示例：
+大标题
+=</p>
+
+<h2 id="section-2">小标题</h2>
+
+<p>示例：
+小标题
+-</p>
+
+<h2 id="section-3">排序整理</h2>
+<p>分割线：---
+示例：</p>
+
+<hr />
+
+<p>无序列表：</p>
+
+<p>*,+，- 后加上空格</p>
+
+<p>- 条目1</p>
+
+<p>- 条目2</p>
+
+<p>- 条目3</p>
+
+<p>示例：
+* 条目1
+* 条目2
+* 条目3</p>
+
+<p>有序列表：</p>
+
+<ol>
+  <li>条目1</li>
+  <li>条目2</li>
+  <li>条目3</li>
+</ol>
+
+<p>嵌套列表:
+- 外层条目1
+ + 内层条目1
+ + 内层条目2
+ + 内层条目3
+- 外层条目2</p>
+
+<h2 id="section-4">插入代码</h2>
+<p>行开头加入4空格
+程序,:</p>
+
+<div class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="cp">#include&lt;iostream&gt;</span>
+    <span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+    <span class="p">{</span>
+      <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span></code></pre></div>
+
+<h2 id="section-5">插入网址和图片</h2>
+<p>将文字显示为超链接，可以使用索引。
+网址：[网站名字](网站url)或者[网站名字][索引号]
+示例：<a href="lidaweionline.com">本站地址</a></p>
+
+<p>图片：![替代文本](图片地址)</p>
+
+<p>图片大小不能设置。如果需要设置需要插入html标记img。</p>
+
+<p>示例：&lt;img src=”图片地址” alt=”替代文字” width=”宽度”&gt;</p>
+
+<h3 id="section-6">试验区</h3>
+<p>双下划线：<strong>双下划线</strong></p>
+
+<p>罗马数字：
+I.<br />
+II.<br />
+III. 
+IV. 
+V. 	</p>
