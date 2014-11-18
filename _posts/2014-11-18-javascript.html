@@ -1,0 +1,100 @@
+---
+layout: post
+title: javascript 
+category: html
+tag: js 
+---
+
+<strong>java简介</strong><br />
+<p>
+JS通过document.getElementById的方法操作html。放在script中。<br>
+脚本语言，逐行执行代码。JS=ECMAScript+DOM+BOM。<br />
+JS操作两大对象：DOM，BOM。<br />
+DOM 描述了处理网页内容的方法和接口，获取和设置文档中标签的属性，操作网页元素和css。（主要）<a href="http://www.w3school.com.cn/htmldom/index.asp">DOM文档</a><br/>
+BOM 描述了与浏览器进行交互的方法和接口，获取和设置浏览器的属性和行为。<br/>
+<hr>
+</p><br />
+<strong>JS参考文章</strong><br />
+<a href="http://www.w3school.com.cn/js/index_pro.asp">JS高级教程（EMCAScript语法）</a>
+<a href="http://www.w3school.com.cn/jsref/index.asp">JS参考手册</a>
+参考程序
+{%highlight javascript %}
+<script>
+function myFunction()
+{
+try
+  {
+  var x=document.getElementById("demo").value;
+  if(x=="")    throw "empty";
+  if(isNaN(x)) throw "not a number";
+  if(x>10)     throw "too high";
+  if(x<5)      throw "too low";
+  }
+catch(err)
+  {
+  var y=document.getElementById("mess");
+  y.innerHTML="Error: " + err + ".";
+  }
+}
+</script>
+
+<h1>My First JavaScript</h1>
+<p>Please input a number between 5 and 10:</p>
+<input id="demo" type="text">
+<button type="button" onclick="myFunction()">Test Input</button>
+<p id="mess"></p>
+{% endhighlight %}
+连同html表单的代码：
+{% highlight javascript%}
+<html>
+<head>
+<script type="text/javascript">
+
+function validate_required(field,alerttxt)
+{
+with (field)
+  {
+  if (value==null||value=="")
+    {alert(alerttxt);return false}
+  else {return true}
+  }
+}
+
+function validate_form(thisform)
+{
+with (thisform)
+  {
+  if (validate_required(email,"Email must be filled out!")==false)
+    {email.focus();return false}
+  }
+}
+</script>
+</head>
+
+<body>
+<form action="submitpage.htm" onsubmit="return validate_form(this)" method="post">
+Email: <input type="text" name="email" size="30">
+<input type="submit" value="Submit"> 
+</form>
+</body>
+
+</html>
+{% endhighlight %}
+</p>
+<hr>
+<strong>JS HTML DOM</strong>
+<p>
+DOM: Document Object Model<br/>
+通过id查找：
+{% highlight javascript%}
+var x=document.getElementById("intro");
+{% endhighlight %}
+通过tag查找：
+{% highlight javascript%}
+var x=document.getElementById("main");
+var y=x.getElementsByTagName("p");
+{% endhighlight %}
+<hr>
+<strong>JS HTML BOM</strong>
+<p>今日休息，明天看js对象和window（BOM）操作。</p>
+
