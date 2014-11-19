@@ -96,5 +96,100 @@ var y=x.getElementsByTagName("p");
 {% endhighlight %}
 <hr>
 <strong>JS HTML BOM</strong>
-<p>今日休息，明天看js对象和window（BOM）操作。</p>
+<hr>
+<script>
+document.write("availheigtht="+screen.availHeight)
+document.write("availheigtht="+screen.availHeight)
+document.write("availwidth="+fscreen.availWidth)
+document.write("availheigtht="+screen.availHeight)
+document.write("availwidth=")
+</script>
+<div id="example"></div>
+<script>
+txt = "<p>Navigator 示例: "</p>";
+txt = "<p>Browser information: "</p>";
+txt = "<p>Browser CodeName: " + navigator.appCodeName + "</p>";
+txt+= "<p>Browser Name: " + navigator.appName + "</p>";
+txt+= "<p>Browser Version: " + navigator.appVersion + "</p>";
+txt+= "<p>Cookies Enabled: " + navigator.cookieEnabled + "</p>";
+txt+= "<p>Platform: " + navigator.platform + "</p>";
+txt+= "<p>User-agent header: " + navigator.userAgent + "</p>";
+txt+= "<p>User-agent language: " + navigator.systemLanguage + "</p>";
+document.getElementById("example").innerHTML=txt;
+</script>
+<p>cookie使用示例</p>
+{% highlight javascript%}
+<html>
+<head>
+<script type="text/javascript">
+function getCookie(c_name)
+{
+if (document.cookie.length>0)
+  {
+  c_start=document.cookie.indexOf(c_name + "=")
+  if (c_start!=-1)
+    { 
+    c_start=c_start + c_name.length+1 
+    c_end=document.cookie.indexOf(";",c_start)
+    if (c_end==-1) c_end=document.cookie.length
+    return unescape(document.cookie.substring(c_start,c_end))
+    } 
+  }
+return ""
+}
+
+function setCookie(c_name,value,expiredays)
+{
+var exdate=new Date()
+exdate.setDate(exdate.getDate()+expiredays)
+document.cookie=c_name+ "=" +escape(value)+
+((expiredays==null) ? "" : ";expires="+exdate.toGMTString())
+}
+function checkCookie()
+{
+username=getCookie('username')
+if (username!=null && username!="")
+  {alert('Welcome again '+username+'!')}
+else 
+  {
+  username=prompt('Please enter your name:',"")
+  if (username!=null && username!="")
+    {
+    setCookie('username',username,365)
+    }
+  }
+}
+</script>
+</head>
+
+<body onLoad="checkCookie()">
+</body>
+</html>
+{% endhighlight%}
+<hr>
+<p>
+<strong>JS helper-jQuery,Prototype,Mootools</strong><br/>
+JS helper提供常见的JS任务函数，例如动画，DOM操作和Ajax处理。<br/>
+<a href="http://www.w3school.com.cn/jquery/index.asp">jQuery教程</a><br/>
+引用jQuery：<br/>
+{% highlight javascript%}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js">
+</script>
+{% endhighlight %}
+jQuery先不看，看完CSS再回头看。<br/>
+JS暂时先这样，看CSS了。
+</p>
+<script>
+</script>
+
+<script>
+</script>
+<script>
+</script>
+<script>
+</script>
+<script>
+</script>
+<script>
+</script>
 
