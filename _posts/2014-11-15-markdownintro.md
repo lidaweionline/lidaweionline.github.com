@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Markdown语法
-categories: markdown
-tags: markdown
+categories: jekyll
+tags: jekyll
 ---
 #markdown简介
 markdown是轻量级的标记语言。部分不完善的图片或者文本可以采用插入html标记解决。

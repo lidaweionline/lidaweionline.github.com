@@ -1,7 +1,7 @@
 ---
 layout: post
 title: liquid语法简介
-categories: liquid
+categories: jekyll 
 tags: liquid markdown
 ---
 #liquid简介
